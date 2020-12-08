@@ -1,22 +1,25 @@
 fileFormatVersion: 2
-guid: f0b71d3cf69f8374fa837a338a8d01e7
+guid: 3d69b320878ef2a42aac331353388f75
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3107520199624331051
-    second: Chardos-sheet_0
+      213: 6867202580034868566
+    second: Chardos-sheet 1_0
   - first:
-      213: 4388082514578703095
-    second: Chardos-sheet_1
+      213: -2943360022218546111
+    second: Chardos-sheet 1_1
   - first:
-      213: 3657065880919527436
-    second: Chardos-sheet_2
+      213: -5402624595942046334
+    second: Chardos-sheet 1_2
   - first:
-      213: 8729128678627334683
-    second: Chardos-sheet_3
+      213: -8886400231715674452
+    second: Chardos-sheet 1_3
   - first:
-      213: -9194629750736635186
-    second: Chardos-sheet_4
+      213: -1622718070531384448
+    second: Chardos-sheet 1_4
+  - first:
+      213: -1849514283709819528
+    second: Chardos-sheet 1_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -47,7 +50,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -140,12 +143,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Chardos-sheet_0
+      name: Chardos-sheet 1_0
       rect:
         serializedVersion: 2
-        x: 33
-        y: 18
-        width: 231
+        x: 13
+        y: 0
+        width: 230
         height: 186
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -154,20 +157,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b2f85fe3821202b20800000000000000
-      internalID: 3107520199624331051
+      spriteID: 655df9fcc543d4f50800000000000000
+      internalID: 6867202580034868566
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chardos-sheet_1
+      name: Chardos-sheet 1_1
       rect:
         serializedVersion: 2
-        x: 333
-        y: 11
-        width: 231
-        height: 186
+        x: 263
+        y: 0
+        width: 237
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,19 +178,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f201964cc995ec30800000000000000
-      internalID: 4388082514578703095
+      spriteID: 144e39587a51727d0800000000000000
+      internalID: -2943360022218546111
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chardos-sheet_2
+      name: Chardos-sheet 1_2
       rect:
         serializedVersion: 2
-        x: 633
-        y: 4
-        width: 231
+        x: 516
+        y: 0
+        width: 246
         height: 186
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -196,19 +199,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c00d860fa0280c230800000000000000
-      internalID: 3657065880919527436
+      spriteID: 2850618ed850605b0800000000000000
+      internalID: -5402624595942046334
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chardos-sheet_3
+      name: Chardos-sheet 1_3
       rect:
         serializedVersion: 2
-        x: 933
-        y: 11
-        width: 231
+        x: 771
+        y: 0
+        width: 257
         height: 186
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -217,19 +220,40 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1ad148c848142970800000000000000
-      internalID: 8729128678627334683
+      spriteID: ca663a8421a2da480800000000000000
+      internalID: -8886400231715674452
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chardos-sheet_4
+      name: Chardos-sheet 1_4
       rect:
         serializedVersion: 2
-        x: 1233
-        y: 18
-        width: 231
+        x: 1030
+        y: 0
+        width: 246
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08b9e5b2382fa79e0800000000000000
+      internalID: -1622718070531384448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chardos-sheet 1_5
+      rect:
+        serializedVersion: 2
+        x: 1298
+        y: 0
+        width: 230
         height: 186
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -238,8 +262,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ecaba1af4fc166080800000000000000
-      internalID: -9194629750736635186
+      spriteID: 8751770ee843556e0800000000000000
+      internalID: -1849514283709819528
       vertices: []
       indices: 
       edges: []
