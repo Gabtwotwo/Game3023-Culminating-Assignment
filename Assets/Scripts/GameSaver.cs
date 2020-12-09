@@ -17,17 +17,26 @@ public class GameSaver : MonoBehaviour
         PlayerPrefs.SetFloat("X position", transform.position.x);
         PlayerPrefs.SetFloat("Y position", transform.position.y);
         PlayerPrefs.Save();
+
+
     }
 
     public void Load()
     {
 
-        if(PlayerPrefs.GetFloat("X Position") == 0.0f && PlayerPrefs.GetFloat("Y Position") == 0.0f)
+        float xSave = PlayerPrefs.GetFloat("X position");
+        float ySave = PlayerPrefs.GetFloat("Y position");
+
+
+
+        if (xSave == 0.0f && ySave == 0.0f)
         {
             Debug.Log("Initial load!");
             PlayerPrefs.SetFloat("X position", -14.4f);
             PlayerPrefs.SetFloat("Y position", 11.2f);
         }
+
+
 
         Debug.Log("Loaded!");
         transform.position = new Vector3(PlayerPrefs.GetFloat("X position"), PlayerPrefs.GetFloat("Y position"), 6.0f);

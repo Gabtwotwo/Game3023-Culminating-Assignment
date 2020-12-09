@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
 
+    private Animator m_animator;
+
     public bool enemyTurn;
     public int lastUsedMove;
     private int mana = 100;
@@ -13,6 +15,35 @@ public class EnemyBehaviour : MonoBehaviour
     void Start()
     {
         enemyTurn = false;
+        m_animator = GetComponent<Animator>();
+        switch(Random.Range(0, 4))
+        {
+            case 0:
+                m_animator.SetInteger("PlayAnimation", 0);
+
+                break;
+            case 1:
+                m_animator.SetInteger("PlayAnimation", 1);
+
+
+                break;
+            case 2:
+                m_animator.SetInteger("PlayAnimation", 2);
+
+
+                break;
+            case 3:
+                m_animator.SetInteger("PlayAnimation", 3);
+
+
+                break;
+            default:
+                Debug.Log("How did we get here?");
+                break;
+
+        }
+
+
     }
 
     // Update is called once per frame
