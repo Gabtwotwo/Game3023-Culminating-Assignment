@@ -93,7 +93,24 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (collision.gameObject.CompareTag("Grass"))
+        {
+            grassSong.SetActive(true);
+            villageSong.SetActive(false);
+
+            Debug.Log("Waiting for 5000th frame");
+            if (Time.frameCount % 5000 == 0)
+            {
+                savingRef.Save();
+                SceneManager.LoadScene("EncounterScene");
+
+            }
+        }
+        else
+        {
+            grassSong.SetActive(false);
+            villageSong.SetActive(true);
+        }
     }
 }
 
