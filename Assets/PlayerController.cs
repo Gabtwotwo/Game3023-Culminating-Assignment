@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     //    rb2d = GetComponent<Rigidbody2D>();
     //}
     private float speed = 5.0f;
-
+    public int encounterChance = 1;
 
     void Start()
     {
@@ -30,26 +30,26 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
-        {
-            Debug.Log("Not in grass");
-            if (transform.position.x > -11 && transform.position.x < -3 && transform.position.y < -1 && transform.position.y > -10)
-            {
-                grassSong.SetActive(true);
-                villageSong.SetActive(false);
+        //if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        //{
+        //    Debug.Log("Not in grass");
+        //    if (transform.position.x > -11 && transform.position.x < -3 && transform.position.y < -1 && transform.position.y > -10)//your ass is grass
+        //    {
+        //        grassSong.SetActive(true);
+        //        villageSong.SetActive(false);
 
-                Debug.Log("Waiting for 5000th frame");
-                if (Time.frameCount % 5000 == 0)
-                {
-                    savingRef.Save();
-                    SceneManager.LoadScene("EncounterScene");
+        //        Debug.Log("Waiting for 5000th frame");
+        //        if (Time.frameCount % 5000 == 0)
+        //        {
+        //            savingRef.Save();
+        //            SceneManager.LoadScene("EncounterScene");
 
-                }
-            }
-            else { grassSong.SetActive(false);
-                villageSong.SetActive(true);
-            }
-        }
+        //        }
+        //    }
+        //    else { grassSong.SetActive(false);
+        //        villageSong.SetActive(true);
+        //    }
+        //}
     }
 
     void FixedUpdate()
@@ -91,26 +91,63 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Grass"))
+    //    {
+    //        grassSong.SetActive(true);
+    //        villageSong.SetActive(false);
+
+    //        Debug.Log("Waiting for 5000th frame");
+    //        if (Time.frameCount % 5000 == 0)
+    //        {
+    //            savingRef.Save();
+    //            SceneManager.LoadScene("EncounterScene");
+
+    //        }
+    //    }
+    //    else
+    //    {
+    //        grassSong.SetActive(false);
+    //        villageSong.SetActive(true);
+    //    }
+    //}
+    
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Grass"))
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
-            grassSong.SetActive(true);
-            villageSong.SetActive(false);
-
-            Debug.Log("Waiting for 5000th frame");
-            if (Time.frameCount % 5000 == 0)
+            if (collision.gameObject.CompareTag("Grass"))
             {
-                savingRef.Save();
-                SceneManager.LoadScene("EncounterScene");
+                grassSong.SetActive(true);
+                villageSong.SetActive(false);
+                Debug.Log("Grass boi");
+                Debug.Log("Waiting for 5000th frame");
+                encounterChance = Random.Range(1, 1000);
+                //if (Time.frameCount % 5000 == 0)
+                //{
+                //    savingRef.Save();
+                //    SceneManager.LoadScene("EncounterScene");
 
+                //}
+                if (encounterChance == Random.Range(1, 1000))
+                {
+                    savingRef.Save();
+                    SceneManager.LoadScene("EncounterScene");
+
+                }
             }
+            //else
+            //{
+            //    grassSong.SetActive(false);
+            //    villageSong.SetActive(true);
+            //}
         }
-        else
-        {
-            grassSong.SetActive(false);
-            villageSong.SetActive(true);
-        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        grassSong.SetActive(false);
+        villageSong.SetActive(true);
     }
 }
 
