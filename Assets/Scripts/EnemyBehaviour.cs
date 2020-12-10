@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class EnemyBehaviour : MonoBehaviour
 {
 
@@ -11,6 +11,11 @@ public class EnemyBehaviour : MonoBehaviour
     public int lastUsedMove;
     private int mana = 100;
 
+    public int maxHealth = 100;
+    private int currentHealth;
+    public HealthBar enemyHealth;
+
+    public TextMeshProUGUI enemyName;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,21 +25,21 @@ public class EnemyBehaviour : MonoBehaviour
         {
             case 0:
                 m_animator.SetInteger("PlayAnimation", 0);
-
+                enemyName.SetText("Florgunk");
                 break;
             case 1:
                 m_animator.SetInteger("PlayAnimation", 1);
-
+                enemyName.SetText("Chardos");
 
                 break;
             case 2:
                 m_animator.SetInteger("PlayAnimation", 2);
-
+                enemyName.SetText("Primcie");
 
                 break;
             case 3:
                 m_animator.SetInteger("PlayAnimation", 3);
-
+                enemyName.SetText("Parino");
 
                 break;
             default:
