@@ -32,8 +32,8 @@ public class GameSaver : MonoBehaviour
         if (xSave == 0.0f && ySave == 0.0f)
         {
             Debug.Log("Initial load!");
-            PlayerPrefs.SetFloat("X position", -14.4f);
-            PlayerPrefs.SetFloat("Y position", 11.2f);
+            PlayerPrefs.SetFloat("X position", -15.77f);
+            PlayerPrefs.SetFloat("Y position", -17.82f);
         }
 
 
