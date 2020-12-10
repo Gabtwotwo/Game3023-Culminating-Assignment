@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class IceBeamButtonBehaviour : MonoBehaviour
 {
 
@@ -10,7 +10,8 @@ public class IceBeamButtonBehaviour : MonoBehaviour
     private bool alreadyAttacked;
     public EnemyBehaviour enemyRef;
     public ManaSystem manaref;
-
+    public SwitchPanel switchPanel;
+    public TextMeshProUGUI battleText;
 
     // Start is called before the first frame update
     void Start()
@@ -54,13 +55,15 @@ public class IceBeamButtonBehaviour : MonoBehaviour
 
     IEnumerator AnimateIceBeam()
     {
+        battleText.SetText("Player used Ice Beam!");
         alreadyAttacked = true;
         enemySprite.color = Color.cyan;
         yield return new WaitForSeconds(1.0f);
         enemySprite.color = Color.blue;
         yield return new WaitForSeconds(1.0f);
         enemySprite.color = enemyColor;
-        GameObject.Find("Enemy").GetComponent<EnemyBehaviour>().enemyTurn = true;
+        enemyRef.enemyTurn = true;
         alreadyAttacked = false;
+        switchPanel.OnSwitchPanelButtonPressed();
     }
 }

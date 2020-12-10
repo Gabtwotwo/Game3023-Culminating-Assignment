@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class EnemyBehaviour : MonoBehaviour
 {
-
+    public ManaSystem player;
     private Animator m_animator;
 
     public bool enemyTurn;
     public int lastUsedMove;
-    private int mana = 100;
+    private int mana;
 
     public int maxHealth = 100;
     private int currentHealth;
@@ -47,7 +48,9 @@ public class EnemyBehaviour : MonoBehaviour
                 break;
 
         }
-
+        mana = 100;
+        currentHealth = maxHealth;
+        enemyHealth.SetMaxHealth(maxHealth);
 
     }
 
@@ -59,7 +62,23 @@ public class EnemyBehaviour : MonoBehaviour
             StartCoroutine(EnemyTurn());
         }
     }
+    public void TakeDamageEnemy(int damage)
+    {
+        if (damage > currentHealth)
+        {
+            //die
+            Debug.Log("Die");
+            SceneManager.LoadScene("SampleScene");
+            
+        }
+        else
+        {
+            currentHealth -= damage;
+            enemyHealth.setHealth(currentHealth);
+        }
 
+
+    }
     IEnumerator EnemyTurn()
     {
         Debug.Log("It's my turn!");
@@ -77,16 +96,27 @@ public class EnemyBehaviour : MonoBehaviour
                     if (Time.frameCount % 2 == 0)
                     {
                         Debug.Log("I'll attack with Earthquake!");
+                        player.TakeDamagePlayer(15);
                     }
-                    else { Debug.Log("I'll attack with Poison Thorn!"); }
+                    else 
+                    { 
+                        Debug.Log("I'll attack with Poison Thorn!");
+                        player.TakeDamagePlayer(5);
+
+                    }
                     mana -= 10;
                     break;
                 case 2:
                     if (Time.frameCount % 2 == 0)
                     {
                         Debug.Log("I'll attack with Fireball!");
+                        player.TakeDamagePlayer(10);
                     }
-                    else { Debug.Log("I'll attack with Poison Thorn!"); }
+                    else 
+                    { 
+                        Debug.Log("I'll attack with Poison Thorn!");
+                        player.TakeDamagePlayer(5);
+                    }
                     mana -= 10;
 
                     break;
@@ -94,8 +124,13 @@ public class EnemyBehaviour : MonoBehaviour
                     if (Time.frameCount % 2 == 0)
                     {
                         Debug.Log("I'll attack with Ice Beam!");
+                        player.TakeDamagePlayer(10);
                     }
-                    else { Debug.Log("I'll attack with Earthquake!"); }
+                    else 
+                    { 
+                        Debug.Log("I'll attack with Earthquake!");
+                        player.TakeDamagePlayer(15);
+                    }
                     mana -= 10;
 
                     break;
@@ -103,13 +138,20 @@ public class EnemyBehaviour : MonoBehaviour
                     if (Time.frameCount % 2 == 0)
                     {
                         Debug.Log("I'll attack with Ice Beam!");
+                        player.TakeDamagePlayer(10);
                     }
-                    else { Debug.Log("I'll attack with Fireball!"); }
+                    else 
+                    { 
+                        Debug.Log("I'll attack with Fireball!");
+                        player.TakeDamagePlayer(10);
+                    }
                     mana -= 10;
 
                     break;
                 default:
                     Debug.Log("I'll use Struggle!");
+                    player.TakeDamagePlayer(15);
+                    TakeDamageEnemy(10);
                     break;
 
             }
@@ -119,6 +161,6 @@ public class EnemyBehaviour : MonoBehaviour
 
         Debug.Log("I end my turn");
         enemyTurn = false;
-        return null;
+        yield return new WaitForEndOfFrame();
     }
 }

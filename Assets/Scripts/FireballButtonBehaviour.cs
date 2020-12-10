@@ -1,16 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class FireballButtonBehaviour : MonoBehaviour
 {
-
+    public SwitchPanel switchPanel;
     public SpriteRenderer enemySprite;
     public Color enemyColor;
     private bool alreadyAttacked;
     public EnemyBehaviour enemyRef;
     public ManaSystem manaref;
-
+    public TextMeshProUGUI battleText;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +41,6 @@ public class FireballButtonBehaviour : MonoBehaviour
                     StartCoroutine(AnimateFireball());
                     enemyRef.lastUsedMove = 1;
                     manaref.mana -= 10;
-
                 }
                 else { Debug.Log("You are out of mana!"); }
 
@@ -51,13 +50,17 @@ public class FireballButtonBehaviour : MonoBehaviour
 
     IEnumerator AnimateFireball()
     {
+        battleText.SetText("Player used Fireball!");
         alreadyAttacked = true;
         enemySprite.color = Color.yellow;
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("kill me");
         enemySprite.color = Color.red;
         yield return new WaitForSeconds(1.0f);
         enemySprite.color = enemyColor;
-        GameObject.Find("Enemy").GetComponent<EnemyBehaviour>().enemyTurn = true;
+        enemyRef.enemyTurn = true;
         alreadyAttacked = false;
+        switchPanel.OnSwitchPanelButtonPressed();
+        yield return null;
     }
 }
