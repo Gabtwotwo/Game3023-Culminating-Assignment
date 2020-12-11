@@ -49,11 +49,12 @@ public class FireballButtonBehaviour : MonoBehaviour
     {
         var emitParams = new ParticleSystem.EmitParams();
         Fireball.Emit(emitParams, 500);
-        enemyRef.TakeDamageEnemy(10);
+        enemyRef.TakeDamageEnemy(25);
         battleTextPanel.SetActive(true);
         battleText.SetText("Player used Fireball!");
         alreadyAttacked = true;
         enemySprite.color = Color.yellow;
+        FindObjectOfType<AudioManager>().Play("Fireball");
         yield return new WaitForSeconds(0.5f);
         Debug.Log("kill me");
         enemySprite.color = Color.red;

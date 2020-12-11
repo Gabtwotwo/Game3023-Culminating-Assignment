@@ -55,12 +55,14 @@ public class IceBeamButtonBehaviour : MonoBehaviour
     {
         var emitParams = new ParticleSystem.EmitParams();
         ice.Emit(emitParams, 500);
-        enemyRef.TakeDamageEnemy(10);
+        enemyRef.TakeDamageEnemy(25);
         battleTextPanel.SetActive(true);
 
         battleText.SetText("Player used Ice Beam!");
         alreadyAttacked = true;
         enemySprite.color = Color.cyan;
+        FindObjectOfType<AudioManager>().Play("Ice Beam");
+
         yield return new WaitForSeconds(1.0f);
         enemySprite.color = Color.blue;
         yield return new WaitForSeconds(1.0f);

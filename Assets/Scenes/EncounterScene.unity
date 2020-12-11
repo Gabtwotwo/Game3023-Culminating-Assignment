@@ -410,6 +410,70 @@ MonoBehaviour:
   battleText: {fileID: 14531523}
   battleTextPanel: {fileID: 1105711334}
   ice: {fileID: 1421925750}
+--- !u!1 &186611439
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 186611441}
+  - component: {fileID: 186611440}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &186611440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186611439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d6df0117b5b2e24ebd7c9f3656092fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Fireball
+    clip: {fileID: 8300000, guid: 0322a4ca9a86f3c40bdd1d04a33d2ead, type: 3}
+    volume: 0.5
+    pitch: 1.5
+    source: {fileID: 0}
+  - name: Ice Beam
+    clip: {fileID: 8300000, guid: eacb083f86c7dba4aa26033a9dc0e709, type: 3}
+    volume: 0.5
+    pitch: 1.5
+    source: {fileID: 0}
+  - name: Earthquake
+    clip: {fileID: 8300000, guid: 75afa60e3dcf07c4d98c82158c0b6b57, type: 3}
+    volume: 0.5
+    pitch: 1.5
+    source: {fileID: 0}
+  - name: Poison Thorn
+    clip: {fileID: 8300000, guid: 2a4357444b42e804eb986a7dae26d655, type: 3}
+    volume: 0.5
+    pitch: 1.5
+    source: {fileID: 0}
+--- !u!4 &186611441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186611439}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &192858110
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,7 +623,7 @@ RectTransform:
   - {fileID: 319871503}
   - {fileID: 1348857762}
   m_Father: {fileID: 1496562448}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -6492,7 +6556,7 @@ RectTransform:
   - {fileID: 806266008}
   - {fileID: 1580081884}
   m_Father: {fileID: 1496562448}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -6774,7 +6838,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 964164234}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6783,7 +6847,7 @@ RectTransform:
   - {fileID: 1955732703}
   - {fileID: 1162897720}
   m_Father: {fileID: 1496562448}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -8527,7 +8591,7 @@ RectTransform:
   m_Children:
   - {fileID: 14531525}
   m_Father: {fileID: 1496562448}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -23809,10 +23873,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 936457741}
-  - {fileID: 964164235}
   - {fileID: 248190820}
   - {fileID: 1105711335}
   - {fileID: 700958758}
+  - {fileID: 964164235}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -23984,6 +24048,9 @@ MonoBehaviour:
   VictorySong: {fileID: 1947964253}
   enemy: {fileID: 1315322926}
   capturedEnemy: {fileID: 1315322930}
+  enemyRef: {fileID: 1315322929}
+  battleTextPanel: {fileID: 1105711334}
+  battleText: {fileID: 14531523}
 --- !u!114 &1580081882 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6358036848427099112, guid: 34a881deafee488499b679b51824d40d, type: 3}

@@ -79,11 +79,12 @@ public class EnemyBehaviour : MonoBehaviour
     }
     public void TakeDamageEnemy(int damage)
     {
-        if (damage > currentHealth)
+        if (damage > currentHealth || currentHealth == 0)
         {
             //die
             Debug.Log("Enemy Die");
-            SceneManager.LoadScene("SampleScene");
+            StartCoroutine(WaitToChangeScene());
+ 
 
 
         }
@@ -203,6 +204,8 @@ public class EnemyBehaviour : MonoBehaviour
         battleTextPanel.SetActive(true);
         battleText.SetText(m_enemyName + " used Posion Thorn");
         playerSprite.color = new Color(128.0f, 0.0f, 128.0f, 255.0f);
+        FindObjectOfType<AudioManager>().Play("Poison Thorn");
+
         yield return new WaitForSeconds(1.0f);
         playerSprite.color = new Color(148.0f, 0.0f, 211.0f, 255.0f);
         yield return new WaitForSeconds(1.0f);
@@ -218,6 +221,8 @@ public class EnemyBehaviour : MonoBehaviour
         battleTextPanel.SetActive(true);
         battleText.SetText( m_enemyName + " used Ice Beam");
         playerSprite.color = Color.cyan;
+        FindObjectOfType<AudioManager>().Play("Ice Beam");
+
         yield return new WaitForSeconds(1.0f);
         playerSprite.color = Color.blue;
         yield return new WaitForSeconds(1.0f);
@@ -233,6 +238,8 @@ public class EnemyBehaviour : MonoBehaviour
         battleTextPanel.SetActive(true);
         battleText.SetText(m_enemyName + " used Earthquake");
         playerSprite.color = new Color(210.0f, 105.0f, 30.0f, 255.0f);
+        FindObjectOfType<AudioManager>().Play("Earthquake");
+
         yield return new WaitForSeconds(1.0f);
         playerSprite.color = new Color(165.0f, 42.0f, 42.0f, 255.0f);
         yield return new WaitForSeconds(1.0f);
@@ -248,6 +255,8 @@ public class EnemyBehaviour : MonoBehaviour
         battleTextPanel.SetActive(true);
         battleText.SetText(m_enemyName + " used Fireball");
         playerSprite.color = Color.yellow;
+        FindObjectOfType<AudioManager>().Play("Fireball");
+
         yield return new WaitForSeconds(1.0f);
         playerSprite.color = Color.red;
         yield return new WaitForSeconds(1.0f);
@@ -255,6 +264,16 @@ public class EnemyBehaviour : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         fireball.Stop();
         battleTextPanel.SetActive(false);
+    }
+
+    IEnumerator WaitToChangeScene()
+    {
+        battleTextPanel.SetActive(true);
+        battleText.SetText("You defeated " + m_enemyName + "!");
+        transform.position = new Vector3(1000, 1000, 1000);
+        yield return new WaitForSeconds(10.0f);
+        SceneManager.LoadScene("SampleScene");
+
     }
 
 }

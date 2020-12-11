@@ -46,11 +46,13 @@ public class EarthquakeButtonBehaviour : MonoBehaviour
     {
         var emitParams = new ParticleSystem.EmitParams();
         earthquake.Emit(emitParams, 500);
-        enemyRef.TakeDamageEnemy(15);
+        enemyRef.TakeDamageEnemy(50);
         battleTextPanel.SetActive(true);
         battleText.SetText("Player used Earthquake!");
         alreadyAttacked = true;
         enemySprite.color = new Color(210.0f, 105.0f, 30.0f, 255.0f);
+        FindObjectOfType<AudioManager>().Play("Earthquake");
+
         yield return new WaitForSeconds(1.0f);
         enemySprite.color = new Color(165.0f, 42.0f, 42.0f, 255.0f);
         yield return new WaitForSeconds(1.0f);
