@@ -24,9 +24,10 @@ public class ManaSystem : MonoBehaviour
         if(damage > currentHealth)
         {
             //die
-            Debug.Log("Die");
+            Debug.Log("Player Die");
             SceneManager.LoadScene("SampleScene");
-            loadGame.Load();
+
+            PlayerPrefs.SetInt("If first save used", 1);
         }
         else
         {

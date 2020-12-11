@@ -25,6 +25,7 @@ public class EnemyBehaviour : MonoBehaviour
     public SpriteRenderer playerSprite;
     public Color playerColor;
 
+    public GameSaver gameSaver;
     
     // Start is called before the first frame update
     void Start()
@@ -80,9 +81,10 @@ public class EnemyBehaviour : MonoBehaviour
         if (damage > currentHealth)
         {
             //die
-            Debug.Log("Die");
+            Debug.Log("Enemy Die");
             SceneManager.LoadScene("SampleScene");
-            
+
+
         }
         else
         {

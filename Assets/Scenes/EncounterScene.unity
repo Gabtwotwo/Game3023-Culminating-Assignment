@@ -4146,6 +4146,7 @@ MonoBehaviour:
   battleTextPanel: {fileID: 1105711334}
   playerSprite: {fileID: 192858111}
   playerColor: {r: 1, g: 1, b: 1, a: 1}
+  gameSaver: {fileID: 192858114}
 --- !u!95 &1315322930
 Animator:
   serializedVersion: 3

@@ -19,17 +19,25 @@ public class PlayerController : MonoBehaviour
     //}
     private float speed = 5.0f;
     public int encounterChance = 1;
-
     void Start()
     {
-        savingRef.Load();
+        if(PlayerPrefs.GetInt("If first save used") == 1)
+        {
+            savingRef.Load();
+            savingRef.SetBool(0);
+        }
+        else
+        {
+            savingRef.LoadEncounterPosition();
+        }
         m_animator = GetComponent<Animator>();
-        
+      
     }
-
+    
 
     void Update()
     {
+        
         //if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         //{
         //    Debug.Log("Not in grass");
@@ -121,18 +129,12 @@ public class PlayerController : MonoBehaviour
             {
                 grassSong.SetActive(true);
                 villageSong.SetActive(false);
-                Debug.Log("Grass boi");
-                Debug.Log("Waiting for 5000th frame");
-                encounterChance = Random.Range(1, 1000);
-                //if (Time.frameCount % 5000 == 0)
-                //{
-                //    savingRef.Save();
-                //    SceneManager.LoadScene("EncounterScene");
-
-                //}
-                if (encounterChance == Random.Range(1, 1000))
+                
+                encounterChance = Random.Range(1, 500);
+                
+                if (encounterChance == Random.Range(1, 500))
                 {
-                    savingRef.Save();
+                    savingRef.SaveEncounterPosition();
                     SceneManager.LoadScene("EncounterScene");
 
                 }

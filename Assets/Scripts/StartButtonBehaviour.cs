@@ -20,6 +20,7 @@ public class StartButtonBehaviour : MonoBehaviour
 
     public void OnStartButtonPressed()
     {
+        PlayerPrefs.SetInt("If first save used", 1);
         Debug.Log("Pressed the button");
         SceneManager.LoadScene("SampleScene");
     }

@@ -61,6 +61,5 @@ public class FireballButtonBehaviour : MonoBehaviour
         enemyRef.enemyTurn = true;
         alreadyAttacked = false;
         switchPanel.OnSwitchPanelButtonPressed();
-        yield return null;
     }
 }
