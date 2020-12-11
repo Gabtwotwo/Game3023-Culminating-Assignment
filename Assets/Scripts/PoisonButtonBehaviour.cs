@@ -13,16 +13,14 @@ public class PoisonButtonBehaviour : MonoBehaviour
     public ManaSystem manaref;
     public TextMeshProUGUI battleText;
 
-
+    public GameObject battleTextPanel;
 
     // Start is called before the first frame update
     void Start()
     {
-        SpriteRenderer enemySprite = GetComponent<SpriteRenderer>();
-        //Color enemyColor = GetComponent<Color>();
+        
         alreadyAttacked = false;
-        EnemyBehaviour enemyRef = GetComponent<EnemyBehaviour>();
-        ManaSystem manaref = GetComponent<ManaSystem>();
+        
     }
 
     // Update is called once per frame
@@ -53,6 +51,8 @@ public class PoisonButtonBehaviour : MonoBehaviour
 
     IEnumerator AnimatePoison()
     {
+        enemyRef.TakeDamageEnemy(5);
+        battleTextPanel.SetActive(true);
         battleText.SetText("Player used Poison Thorn");
         alreadyAttacked = true;
         enemySprite.color = new Color(128.0f, 0.0f, 128.0f, 255.0f);
@@ -60,8 +60,12 @@ public class PoisonButtonBehaviour : MonoBehaviour
         enemySprite.color = new Color(148.0f, 0.0f, 211.0f, 255.0f);
         yield return new WaitForSeconds(1.0f);
         enemySprite.color = enemyColor;
+        yield return new WaitForSeconds(1.0f);       
+        battleTextPanel.SetActive(false);
         enemyRef.enemyTurn = true;
-        alreadyAttacked = false;
+        alreadyAttacked = false;        
         switchPanel.OnSwitchPanelButtonPressed();
+        
+
     }
 }

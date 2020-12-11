@@ -17,6 +17,15 @@ public class EnemyBehaviour : MonoBehaviour
     public HealthBar enemyHealth;
 
     public TextMeshProUGUI enemyName;
+    private string m_enemyName;
+
+    public TextMeshProUGUI battleText;
+
+    public GameObject battleTextPanel;
+    public SpriteRenderer playerSprite;
+    public Color playerColor;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -26,21 +35,25 @@ public class EnemyBehaviour : MonoBehaviour
         {
             case 0:
                 m_animator.SetInteger("PlayAnimation", 0);
-                enemyName.SetText("Florgunk");
+                m_enemyName = "Florgunk";
+                enemyName.SetText(m_enemyName);
                 break;
             case 1:
                 m_animator.SetInteger("PlayAnimation", 1);
-                enemyName.SetText("Chardos");
+                m_enemyName = "Chardos";
+                enemyName.SetText(m_enemyName);
 
                 break;
             case 2:
                 m_animator.SetInteger("PlayAnimation", 2);
-                enemyName.SetText("Primcie");
+                m_enemyName = "Primcie";
+                enemyName.SetText(m_enemyName);
 
                 break;
             case 3:
                 m_animator.SetInteger("PlayAnimation", 3);
-                enemyName.SetText("Parino");
+                m_enemyName = "Parino";
+                enemyName.SetText(m_enemyName);
 
                 break;
             default:
@@ -97,11 +110,15 @@ public class EnemyBehaviour : MonoBehaviour
                     {
                         Debug.Log("I'll attack with Earthquake!");
                         player.TakeDamagePlayer(15);
+                        StartCoroutine(AnimateEarthquake());
+
                     }
                     else 
                     { 
                         Debug.Log("I'll attack with Poison Thorn!");
                         player.TakeDamagePlayer(5);
+                        StartCoroutine(AnimatePoison());
+
 
                     }
                     mana -= 10;
@@ -111,11 +128,15 @@ public class EnemyBehaviour : MonoBehaviour
                     {
                         Debug.Log("I'll attack with Fireball!");
                         player.TakeDamagePlayer(10);
+                        StartCoroutine(AnimateFireball());
+
                     }
                     else 
                     { 
                         Debug.Log("I'll attack with Poison Thorn!");
                         player.TakeDamagePlayer(5);
+                        StartCoroutine(AnimatePoison());
+
                     }
                     mana -= 10;
 
@@ -125,11 +146,15 @@ public class EnemyBehaviour : MonoBehaviour
                     {
                         Debug.Log("I'll attack with Ice Beam!");
                         player.TakeDamagePlayer(10);
+                        StartCoroutine(AnimateIceBeam());
+
                     }
                     else 
                     { 
                         Debug.Log("I'll attack with Earthquake!");
                         player.TakeDamagePlayer(15);
+                        StartCoroutine(AnimateEarthquake());
+
                     }
                     mana -= 10;
 
@@ -139,11 +164,15 @@ public class EnemyBehaviour : MonoBehaviour
                     {
                         Debug.Log("I'll attack with Ice Beam!");
                         player.TakeDamagePlayer(10);
+                        StartCoroutine(AnimateIceBeam());
+
                     }
                     else 
                     { 
                         Debug.Log("I'll attack with Fireball!");
                         player.TakeDamagePlayer(10);
+                        StartCoroutine(AnimateFireball());
+
                     }
                     mana -= 10;
 
@@ -163,4 +192,54 @@ public class EnemyBehaviour : MonoBehaviour
         enemyTurn = false;
         yield return new WaitForEndOfFrame();
     }
+
+    IEnumerator AnimatePoison()
+    {
+        battleTextPanel.SetActive(true);
+        battleText.SetText(m_enemyName + " used Posion Thorn");
+        playerSprite.color = new Color(128.0f, 0.0f, 128.0f, 255.0f);
+        yield return new WaitForSeconds(1.0f);
+        playerSprite.color = new Color(148.0f, 0.0f, 211.0f, 255.0f);
+        yield return new WaitForSeconds(1.0f);
+        playerSprite.color = playerColor;
+        yield return new WaitForSeconds(1.0f);
+        battleTextPanel.SetActive(false);
+    }
+    IEnumerator AnimateIceBeam()
+    {
+        battleTextPanel.SetActive(true);
+        battleText.SetText( m_enemyName + " used Ice Beam");
+        playerSprite.color = Color.cyan;
+        yield return new WaitForSeconds(1.0f);
+        playerSprite.color = Color.blue;
+        yield return new WaitForSeconds(1.0f);
+        playerSprite.color = playerColor;
+        yield return new WaitForSeconds(1.0f);
+        battleTextPanel.SetActive(false);
+    }
+    IEnumerator AnimateEarthquake()
+    {
+        battleTextPanel.SetActive(true);
+        battleText.SetText(m_enemyName + " used Earthquake");
+        playerSprite.color = new Color(210.0f, 105.0f, 30.0f, 255.0f);
+        yield return new WaitForSeconds(1.0f);
+        playerSprite.color = new Color(165.0f, 42.0f, 42.0f, 255.0f);
+        yield return new WaitForSeconds(1.0f);
+        playerSprite.color = playerColor;
+        yield return new WaitForSeconds(1.0f);
+        battleTextPanel.SetActive(false);
+    }
+    IEnumerator AnimateFireball()
+    {
+        battleTextPanel.SetActive(true);
+        battleText.SetText(m_enemyName + " used Fireball");
+        playerSprite.color = Color.yellow;
+        yield return new WaitForSeconds(1.0f);
+        playerSprite.color = Color.red;
+        yield return new WaitForSeconds(1.0f);
+        playerSprite.color = playerColor;
+        yield return new WaitForSeconds(1.0f);
+        battleTextPanel.SetActive(false);
+    }
+
 }

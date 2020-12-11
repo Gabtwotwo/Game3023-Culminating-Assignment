@@ -12,15 +12,14 @@ public class EarthquakeButtonBehaviour : MonoBehaviour
     public EnemyBehaviour enemyRef;
     public ManaSystem manaref;
     public TextMeshProUGUI battleText;
+    public GameObject battleTextPanel;
 
     // Start is called before the first frame update
     void Start()
     {
-        SpriteRenderer enemySprite = GetComponent<SpriteRenderer>();
-        //Color enemyColor = GetComponent<Color>();
+
         alreadyAttacked = false;
-        EnemyBehaviour enemyRef = GetComponent<EnemyBehaviour>();
-        ManaSystem manaref = GetComponent<ManaSystem>();
+
 
     }
 
@@ -46,6 +45,8 @@ public class EarthquakeButtonBehaviour : MonoBehaviour
 
     IEnumerator AnimateEarthquake()
     {
+        enemyRef.TakeDamageEnemy(15);
+        battleTextPanel.SetActive(true);
         battleText.SetText("Player used Earthquake!");
         alreadyAttacked = true;
         enemySprite.color = new Color(210.0f, 105.0f, 30.0f, 255.0f);
@@ -53,6 +54,8 @@ public class EarthquakeButtonBehaviour : MonoBehaviour
         enemySprite.color = new Color(165.0f, 42.0f, 42.0f, 255.0f);
         yield return new WaitForSeconds(1.0f);
         enemySprite.color = enemyColor;
+        yield return new WaitForSeconds(1.0f);
+        battleTextPanel.SetActive(false);
         enemyRef.enemyTurn = true;
         alreadyAttacked = false;
         switchPanel.OnSwitchPanelButtonPressed();

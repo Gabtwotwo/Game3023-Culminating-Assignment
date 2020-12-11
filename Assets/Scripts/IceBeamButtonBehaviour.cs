@@ -12,15 +12,13 @@ public class IceBeamButtonBehaviour : MonoBehaviour
     public ManaSystem manaref;
     public SwitchPanel switchPanel;
     public TextMeshProUGUI battleText;
+    public GameObject battleTextPanel;
 
     // Start is called before the first frame update
     void Start()
     {
-        SpriteRenderer enemySprite = GetComponent<SpriteRenderer>();
-        //Color enemyColor = GetComponent<Color>();
         alreadyAttacked = false;
-        EnemyBehaviour enemyRef = GetComponent<EnemyBehaviour>();
-        ManaSystem manaref = GetComponent<ManaSystem>();
+        
 
 
     }
@@ -55,6 +53,9 @@ public class IceBeamButtonBehaviour : MonoBehaviour
 
     IEnumerator AnimateIceBeam()
     {
+        enemyRef.TakeDamageEnemy(10);
+        battleTextPanel.SetActive(true);
+
         battleText.SetText("Player used Ice Beam!");
         alreadyAttacked = true;
         enemySprite.color = Color.cyan;
@@ -62,6 +63,8 @@ public class IceBeamButtonBehaviour : MonoBehaviour
         enemySprite.color = Color.blue;
         yield return new WaitForSeconds(1.0f);
         enemySprite.color = enemyColor;
+        yield return new WaitForSeconds(1.0f);
+        battleTextPanel.SetActive(false);
         enemyRef.enemyTurn = true;
         alreadyAttacked = false;
         switchPanel.OnSwitchPanelButtonPressed();

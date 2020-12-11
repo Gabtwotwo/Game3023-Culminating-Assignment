@@ -408,6 +408,7 @@ MonoBehaviour:
   manaref: {fileID: 192858113}
   switchPanel: {fileID: 1496562449}
   battleText: {fileID: 14531523}
+  battleTextPanel: {fileID: 1105711334}
 --- !u!1 &192858110
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,6 +882,7 @@ MonoBehaviour:
   enemyRef: {fileID: 1315322929}
   manaref: {fileID: 192858113}
   battleText: {fileID: 14531523}
+  battleTextPanel: {fileID: 1105711334}
 --- !u!1 &319871500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1967,8 +1969,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -348.60007, y: 103.600006}
-  m_SizeDelta: {x: 664.00793, y: 158.62637}
+  m_AnchoredPosition: {x: -402.29, y: 103.600006}
+  m_SizeDelta: {x: 771.3823, y: 158.62637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &964164236
 MonoBehaviour:
@@ -3693,7 +3695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1105711335
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3711,7 +3713,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -659, y: 365}
+  m_AnchoredPosition: {x: -402.27, y: 103.6}
   m_SizeDelta: {x: 771.3568, y: 158.62637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1105711336
@@ -3903,6 +3905,7 @@ MonoBehaviour:
   enemyRef: {fileID: 1315322929}
   manaref: {fileID: 192858113}
   battleText: {fileID: 14531523}
+  battleTextPanel: {fileID: 1105711334}
 --- !u!1 &1172660253
 GameObject:
   m_ObjectHideFlags: 0
@@ -4139,6 +4142,10 @@ MonoBehaviour:
   maxHealth: 100
   enemyHealth: {fileID: 1348857763}
   enemyName: {fileID: 319871501}
+  battleText: {fileID: 14531523}
+  battleTextPanel: {fileID: 1105711334}
+  playerSprite: {fileID: 192858111}
+  playerColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!95 &1315322930
 Animator:
   serializedVersion: 3
@@ -5751,6 +5758,7 @@ MonoBehaviour:
   enemyRef: {fileID: 1315322929}
   manaref: {fileID: 192858113}
   battleText: {fileID: 14531523}
+  battleTextPanel: {fileID: 1105711334}
 --- !u!1001 &1979912541
 PrefabInstance:
   m_ObjectHideFlags: 0
