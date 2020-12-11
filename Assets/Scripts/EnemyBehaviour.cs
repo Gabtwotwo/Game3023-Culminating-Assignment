@@ -26,7 +26,8 @@ public class EnemyBehaviour : MonoBehaviour
     public Color playerColor;
 
     public GameSaver gameSaver;
-    
+    public ParticleSystem earthquake, fireball, poison, ice;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -117,7 +118,7 @@ public class EnemyBehaviour : MonoBehaviour
                     }
                     else 
                     { 
-                        Debug.Log("I'll attack with Poison Thorn!");
+                        Debug.Log("I'll attack with Poison Spit!");
                         player.TakeDamagePlayer(5);
                         StartCoroutine(AnimatePoison());
 
@@ -135,7 +136,7 @@ public class EnemyBehaviour : MonoBehaviour
                     }
                     else 
                     { 
-                        Debug.Log("I'll attack with Poison Thorn!");
+                        Debug.Log("I'll attack with Poison Spit!");
                         player.TakeDamagePlayer(5);
                         StartCoroutine(AnimatePoison());
 
@@ -197,6 +198,8 @@ public class EnemyBehaviour : MonoBehaviour
 
     IEnumerator AnimatePoison()
     {
+        var emitParams = new ParticleSystem.EmitParams();
+        poison.Emit(emitParams, 500);
         battleTextPanel.SetActive(true);
         battleText.SetText(m_enemyName + " used Posion Thorn");
         playerSprite.color = new Color(128.0f, 0.0f, 128.0f, 255.0f);
@@ -205,10 +208,13 @@ public class EnemyBehaviour : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         playerSprite.color = playerColor;
         yield return new WaitForSeconds(1.0f);
+        poison.Stop();
         battleTextPanel.SetActive(false);
     }
     IEnumerator AnimateIceBeam()
     {
+        var emitParams = new ParticleSystem.EmitParams();
+        ice.Emit(emitParams, 500);
         battleTextPanel.SetActive(true);
         battleText.SetText( m_enemyName + " used Ice Beam");
         playerSprite.color = Color.cyan;
@@ -217,10 +223,13 @@ public class EnemyBehaviour : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         playerSprite.color = playerColor;
         yield return new WaitForSeconds(1.0f);
+        ice.Stop();
         battleTextPanel.SetActive(false);
     }
     IEnumerator AnimateEarthquake()
     {
+        var emitParams = new ParticleSystem.EmitParams();
+        earthquake.Emit(emitParams, 500);
         battleTextPanel.SetActive(true);
         battleText.SetText(m_enemyName + " used Earthquake");
         playerSprite.color = new Color(210.0f, 105.0f, 30.0f, 255.0f);
@@ -229,10 +238,13 @@ public class EnemyBehaviour : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         playerSprite.color = playerColor;
         yield return new WaitForSeconds(1.0f);
+        earthquake.Stop();
         battleTextPanel.SetActive(false);
     }
     IEnumerator AnimateFireball()
     {
+        var emitParams = new ParticleSystem.EmitParams();
+        fireball.Emit(emitParams, 500);
         battleTextPanel.SetActive(true);
         battleText.SetText(m_enemyName + " used Fireball");
         playerSprite.color = Color.yellow;
@@ -241,6 +253,7 @@ public class EnemyBehaviour : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         playerSprite.color = playerColor;
         yield return new WaitForSeconds(1.0f);
+        fireball.Stop();
         battleTextPanel.SetActive(false);
     }
 

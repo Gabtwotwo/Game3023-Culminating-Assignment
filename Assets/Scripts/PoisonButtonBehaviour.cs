@@ -12,6 +12,7 @@ public class PoisonButtonBehaviour : MonoBehaviour
     public EnemyBehaviour enemyRef;
     public ManaSystem manaref;
     public TextMeshProUGUI battleText;
+    public ParticleSystem poison;
 
     public GameObject battleTextPanel;
 
@@ -51,9 +52,11 @@ public class PoisonButtonBehaviour : MonoBehaviour
 
     IEnumerator AnimatePoison()
     {
+        var emitParams = new ParticleSystem.EmitParams();
+        poison.Emit(emitParams, 500);
         enemyRef.TakeDamageEnemy(5);
         battleTextPanel.SetActive(true);
-        battleText.SetText("Player used Poison Thorn");
+        battleText.SetText("Player used Poison Spit");
         alreadyAttacked = true;
         enemySprite.color = new Color(128.0f, 0.0f, 128.0f, 255.0f);
         yield return new WaitForSeconds(1.0f);
@@ -63,7 +66,8 @@ public class PoisonButtonBehaviour : MonoBehaviour
         yield return new WaitForSeconds(1.0f);       
         battleTextPanel.SetActive(false);
         enemyRef.enemyTurn = true;
-        alreadyAttacked = false;        
+        alreadyAttacked = false;
+        poison.Stop();
         switchPanel.OnSwitchPanelButtonPressed();
         
 

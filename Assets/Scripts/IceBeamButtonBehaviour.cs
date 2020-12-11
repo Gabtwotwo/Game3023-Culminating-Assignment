@@ -13,7 +13,7 @@ public class IceBeamButtonBehaviour : MonoBehaviour
     public SwitchPanel switchPanel;
     public TextMeshProUGUI battleText;
     public GameObject battleTextPanel;
-
+    public ParticleSystem ice;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +53,8 @@ public class IceBeamButtonBehaviour : MonoBehaviour
 
     IEnumerator AnimateIceBeam()
     {
+        var emitParams = new ParticleSystem.EmitParams();
+        ice.Emit(emitParams, 500);
         enemyRef.TakeDamageEnemy(10);
         battleTextPanel.SetActive(true);
 
@@ -67,6 +69,7 @@ public class IceBeamButtonBehaviour : MonoBehaviour
         battleTextPanel.SetActive(false);
         enemyRef.enemyTurn = true;
         alreadyAttacked = false;
+        ice.Stop();
         switchPanel.OnSwitchPanelButtonPressed();
     }
 }

@@ -13,14 +13,13 @@ public class EarthquakeButtonBehaviour : MonoBehaviour
     public ManaSystem manaref;
     public TextMeshProUGUI battleText;
     public GameObject battleTextPanel;
-
+    public ParticleSystem earthquake;
+    
     // Start is called before the first frame update
     void Start()
     {
 
         alreadyAttacked = false;
-
-
     }
 
     public void OnEarthquakeButtonPressed()
@@ -45,6 +44,8 @@ public class EarthquakeButtonBehaviour : MonoBehaviour
 
     IEnumerator AnimateEarthquake()
     {
+        var emitParams = new ParticleSystem.EmitParams();
+        earthquake.Emit(emitParams, 500);
         enemyRef.TakeDamageEnemy(15);
         battleTextPanel.SetActive(true);
         battleText.SetText("Player used Earthquake!");
@@ -58,6 +59,7 @@ public class EarthquakeButtonBehaviour : MonoBehaviour
         battleTextPanel.SetActive(false);
         enemyRef.enemyTurn = true;
         alreadyAttacked = false;
+        earthquake.Stop();
         switchPanel.OnSwitchPanelButtonPressed();
     }
 }

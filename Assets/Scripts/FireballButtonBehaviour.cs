@@ -12,6 +12,7 @@ public class FireballButtonBehaviour : MonoBehaviour
     public ManaSystem manaref;
     public TextMeshProUGUI battleText;
     public GameObject battleTextPanel;
+    public ParticleSystem Fireball;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +47,8 @@ public class FireballButtonBehaviour : MonoBehaviour
 
     IEnumerator AnimateFireball()
     {
+        var emitParams = new ParticleSystem.EmitParams();
+        Fireball.Emit(emitParams, 500);
         enemyRef.TakeDamageEnemy(10);
         battleTextPanel.SetActive(true);
         battleText.SetText("Player used Fireball!");
@@ -60,6 +63,7 @@ public class FireballButtonBehaviour : MonoBehaviour
         battleTextPanel.SetActive(false);
         enemyRef.enemyTurn = true;
         alreadyAttacked = false;
+        Fireball.Stop();
         switchPanel.OnSwitchPanelButtonPressed();
     }
 }
