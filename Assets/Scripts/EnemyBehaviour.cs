@@ -24,6 +24,8 @@ public class EnemyBehaviour : MonoBehaviour
     public GameObject battleTextPanel;
     public SpriteRenderer playerSprite;
     public Color playerColor;
+    public GameObject victorySong;
+    public GameObject battleSong;
 
     public GameSaver gameSaver;
     public ParticleSystem earthquake, fireball, poison, ice;
@@ -72,10 +74,21 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(enemyTurn == true)
+
+        if (currentHealth <= 0)
+        {
+            enemyTurn = false;
+            battleSong.SetActive(false);
+            victorySong.SetActive(true);
+            StartCoroutine(WaitToChangeScene());
+
+        }
+        if (enemyTurn == true)
         {
             StartCoroutine(EnemyTurn());
         }
+
+
     }
     public void TakeDamageEnemy(int damage)
     {
@@ -268,6 +281,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     IEnumerator WaitToChangeScene()
     {
+
         battleTextPanel.SetActive(true);
         battleText.SetText("You defeated " + m_enemyName + "!");
         transform.position = new Vector3(1000, 1000, 1000);

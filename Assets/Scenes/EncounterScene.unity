@@ -18657,6 +18657,8 @@ MonoBehaviour:
   battleTextPanel: {fileID: 1105711334}
   playerSprite: {fileID: 192858111}
   playerColor: {r: 1, g: 1, b: 1, a: 1}
+  victorySong: {fileID: 1947964253}
+  battleSong: {fileID: 1449318292}
   gameSaver: {fileID: 192858114}
   earthquake: {fileID: 1838897604}
   fireball: {fileID: 1248813294}
