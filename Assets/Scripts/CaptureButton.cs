@@ -31,31 +31,31 @@ public class CaptureButton : MonoBehaviour
             {
                 case 0:
                     Debug.Log("You caught a Florgunk!");
-                    PlayerPrefs.SetInt("CapturedMon", 0);
+                    PlayerPrefs.SetInt("CapturedMon", PlayerPrefs.GetInt("CapturedMon") + 1);
                     m_enemyName = "Florgunk";
                     break;
                 case 1:
                     Debug.Log("You caught a Chardos!");
-                    PlayerPrefs.SetInt("CapturedMon", 1);
+                    PlayerPrefs.SetInt("CapturedMon", PlayerPrefs.GetInt("CapturedMon") + 1);
                     m_enemyName = "Chardos";
 
 
                     break;
                 case 2:
                     Debug.Log("You caught a Primcie!");
-                    PlayerPrefs.SetInt("CapturedMon", 2);
+                    PlayerPrefs.SetInt("CapturedMon", PlayerPrefs.GetInt("CapturedMon") + 1);
                     m_enemyName = "Primcie";
 
                     break;
                 case 3:
                     Debug.Log("You caught a Parino!");
-                    PlayerPrefs.SetInt("CapturedMon", 3);
+                    PlayerPrefs.SetInt("CapturedMon", PlayerPrefs.GetInt("CapturedMon") + 1);
                     m_enemyName = "Parino";
 
                     break;
                 default:
                     Debug.Log("You caught MissingNo.!");
-                    PlayerPrefs.SetInt("CapturedMon", 10);
+                    PlayerPrefs.SetInt("CapturedMon", PlayerPrefs.GetInt("CapturedMon") + 10);
                     m_enemyName = "MissingNo.";
 
                     break;

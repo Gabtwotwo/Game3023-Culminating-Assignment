@@ -198,6 +198,7 @@ public class EnemyBehaviour : MonoBehaviour
                     Debug.Log("I'll use Struggle!");
                     player.TakeDamagePlayer(15);
                     TakeDamageEnemy(10);
+                    StartCoroutine(AnimateStruggle());
                     break;
 
             }
@@ -278,14 +279,25 @@ public class EnemyBehaviour : MonoBehaviour
         fireball.Stop();
         battleTextPanel.SetActive(false);
     }
-
+    IEnumerator AnimateStruggle()
+    {
+        
+        battleTextPanel.SetActive(true);
+        battleText.SetText(m_enemyName + " used Struggle");
+        yield return new WaitForSeconds(3.0f);
+        battleTextPanel.SetActive(false);
+    }
     IEnumerator WaitToChangeScene()
     {
 
         battleTextPanel.SetActive(true);
         battleText.SetText("You defeated " + m_enemyName + "!");
         transform.position = new Vector3(1000, 1000, 1000);
+        
+
+        
         yield return new WaitForSeconds(10.0f);
+        PlayerPrefs.SetInt("DefeatedMon", PlayerPrefs.GetInt("DefeatedMon") + 1);
         SceneManager.LoadScene("SampleScene");
 
     }
